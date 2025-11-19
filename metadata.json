@@ -1,0 +1,7 @@
+{
+  "name": "Royal Scribe",
+  "description": "A scholarly Ancient Egyptian Hieroglyphic exploration tool featuring a digital knowledge graph of the Gardiner Sign List, a Middle Egyptian dictionary, AI-powered translations, and an interactive study grid.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

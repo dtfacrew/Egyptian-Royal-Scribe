@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royal Scribe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Default Dark Mode (Tomb/Lapis) */
+        --color-bg: #0B0C0E;
+        --color-text: #E6DCC3;
+        --color-gold: #C5A059;
+        --color-gold-dim: #8A7035;
+        --color-lapis: #1F3A60;
+        --color-sand: #E6DCC3;
+        --color-paper: #1A1A1C;
+        --color-clay: #9D432C;
+        --color-black: #050506;
+        --color-border: #334155;
+      }
+
+      [data-theme="light"] {
+        /* Light Mode (Papyrus/Ink) */
+        --color-bg: #F0EAD6; /* Parchment */
+        --color-text: #2D2D2D; /* Ink */
+        --color-gold: #B08D55; /* Darker Gold for contrast */
+        --color-gold-dim: #D4C5A5;
+        --color-lapis: #2C5282;
+        --color-sand: #1A202C; /* Dark text for sand areas */
+        --color-paper: #FDFBF7; /* Lighter paper */
+        --color-clay: #C53030;
+        --color-black: #FFFFF0; /* Inverted for backgrounds that expect darkness */
+        --color-border: #CBD5E0;
+      }
+
+      body {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Texture Class */
+      .bg-grain {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--color-bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-paper);
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-gold);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'egypt-gold': 'var(--color-gold)',
+              'egypt-gold-dim': 'var(--color-gold-dim)',
+              'egypt-lapis': 'var(--color-lapis)',
+              'egypt-sand': 'var(--color-sand)',
+              'egypt-paper': 'var(--color-paper)',
+              'egypt-clay': 'var(--color-clay)',
+              'egypt-black': 'var(--color-black)',
+              'egypt-bg': 'var(--color-bg)',
+            },
+            fontFamily: {
+              serif: ['Cinzel', 'serif'],
+              body: ['Cormorant Garamond', 'serif'],
+              glyph: ['Noto Sans Egyptian Hieroglyphs', 'sans-serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'in-from-bottom': 'slideUp 0.5s ease-out',
+              'flip': 'flip 0.6s preserve-3d',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "zustand": "https://aistudiocdn.com/zustand@^5.0.8",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
