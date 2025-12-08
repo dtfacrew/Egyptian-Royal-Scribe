@@ -52,9 +52,10 @@ import StudyHub from './src/components/StudyHub';
 import LessonsView from './src/components/LessonsView';
 import NameEntryModal from './src/components/NameEntryModal';
 import HieroglyphRenderer from './src/components/HieroglyphRenderer';
+import TestRenderer from './src/pages/TestRenderer';
 import { 
   Search, Grid, List, Square, PenTool, GraduationCap, 
-  User, Filter, Info, Sun, Moon, Settings, Book, BookCopy, X, Scroll, Languages, ArrowRight
+  User, Filter, Info, Sun, Moon, Settings, Book, BookCopy, X, Scroll, Languages, ArrowRight, FlaskConical
 } from 'lucide-react';
 import { EgyptianPeriod, GraftType, HieroglyphDetails, WordDetails } from './types';
 
@@ -72,6 +73,7 @@ function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [showNameEntry, setShowNameEntry] = useState(false);
   const [pendingTab, setPendingTab] = useState<Tab | null>(null);
+  const [showTestRenderer, setShowTestRenderer] = useState(false);
 
   useEffect(() => {
     initApp();
@@ -236,6 +238,22 @@ function App() {
   // Solid background color based on theme (using CSS variable equivalent logic for simplicity)
   const headerBgClass = theme === 'dark' ? 'bg-[#0B0C0E]' : 'bg-[#F0EAD6]';
 
+  if (showTestRenderer) {
+    return (
+        <div className="min-h-screen bg-egypt-bg text-egypt-sand font-body">
+            <header className={`sticky top-0 z-40 ${headerBgClass} border-b border-egypt-gold/20 shadow-lg`}>
+                <div className="max-w-7xl mx-auto px-4 h-18 md:h-20 flex items-center justify-between">
+                    <h1 className="text-xl font-serif tracking-[0.15em] text-egypt-sand">Test Renderer</h1>
+                    <NavButton active={showTestRenderer} onClick={() => setShowTestRenderer(!showTestRenderer)} icon={<X size={16} />} label="Close" />
+                </div>
+            </header>
+            <main className="p-8">
+                <TestRenderer />
+            </main>
+        </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-egypt-bg text-egypt-sand font-body selection:bg-egypt-gold selection:text-black transition-colors duration-300 relative">
       {/* Global Grain Texture */}
@@ -266,6 +284,7 @@ function App() {
             <div className="w-px h-6 bg-black/10 mx-1 self-center"></div>
             <NavButton active={activeTab === 'translator'} onClick={() => handleTabChange('translator')} icon={<Languages size={16} />} label="Translator" />
             <NavButton active={activeTab === 'profile'} onClick={() => handleTabChange('profile')} icon={<User size={16} />} label="Profile" />
+            <NavButton active={showTestRenderer} onClick={() => setShowTestRenderer(!showTestRenderer)} icon={<FlaskConical size={16} />} label="Test Renderer" />
           </div>
 
           <div className="flex items-center gap-3">
